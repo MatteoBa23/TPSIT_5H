@@ -1,7 +1,3 @@
-/**
- * from network/..
- * javac network/TcpServer.java; java network.TcpServer 
- */
 package network;
 
 import java.io.DataInputStream;
@@ -72,19 +68,19 @@ public class TcpServer {
 				outStream.flush();
 				System.out.println("Server: invio messaggio al client\n");
 				
+				if(conso==vocali/2)
+				{
+					System.out.println("Spegnimento server...");
+					clientMsg="quit";
+					
+				}
 			}
-			
 			// Close resources
 			serverSocket.close();
 			clientSocket.close();
 			inStream.close();
 			outStream.close();
 			
-			
-					
-
-			
-
 		} catch (Exception e) {
 			System.out.println(e);
 		}
