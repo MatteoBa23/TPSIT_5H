@@ -36,14 +36,28 @@ class TcpServer extends Thread {
 				       System.out.print(matrice[i][j]+" ");
 				      System.out.println(); // vado a capo dopo ogni riga
 				     }
+				
 				System.out.println("\n");
 				//Leggiamo il messaggio proveniente dal client, e lo stampiamo a schermo
 				cMsg = inStream.readUTF();
 				System.out.println("Server.Thread " + clientNo + " Riga: " + cMsg );
+				try {
+					int riga = Integer.parseInt(cMsg);
+				}catch(NumberFormatException ex) {
+					ex.printStackTrace();
+				}
 				
 				cMsg = inStream.readUTF();
 				System.out.println("Server.Thread " + clientNo + " Colonna: " + cMsg );
 				
+				try {
+					int colonna = Integer.parseInt(cMsg);
+				}catch(NumberFormatException ex) {
+					ex.printStackTrace();
+				}
+				
+				matrice[riga][colonna] = "PO";
+
 				System.out.println("\n");
 				
 			}
