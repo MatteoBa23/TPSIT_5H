@@ -1,69 +1,79 @@
+/**
+ * from network/..
+ * javac network/Client.java; c
+ */
 package network;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
+import java.util.Scanner;
 
-class TcpServer extends Thread {
-	Socket serverClientSocket;
-	int clientNo;
-	
-	TcpServer(Socket inSocket, int ClientNo) {
-		serverClientSocket = inSocket;
-		clientNo = ClientNo;
-	}
-
-	public void run() {
+public class TcpClient {
+	public static void main(String[] args) throws Exception {
 		try {
-			// Streams to read and write the data to socket streams
-			DataInputStream inStream = new DataInputStream(serverClientSocket.getInputStream());
-			DataOutputStream outStream = new DataOutputStream(serverClientSocket.getOutputStream());
 
-			String cMsg = "";
-			String sMsg = "";
-			String[][] matrice;
-			matrice = new String[5][5];
-			for (int i=0; i<5; i++)
-			      for (int j=0; j<5; j++)
-			        matrice[i][j] = "PL";
+			String severAddress="127.0.0.1";  // localhost
+			int severPort=8698;
+			String clientMessage = "";
+			String serverMessage = "";
 			
-			
-			while (!cMsg.equals("end")) {
-				
-				
-				for (int i=0; i<5; i++) {
-					  for (int j=0; j<5; j++)
-				       System.out.print(matrice[i][j]+" ");
-				      System.out.println(); // vado a capo dopo ogni riga
-				     }
-				
-				//Leggiamo il messaggio proveniente dal client, e lo stampiamo a schermo
-				cMsg = inStream.readUTF();
-				System.out.println("Server.Thread " + clientNo + " Riga: " + cMsg );
-				matrice[cMsg][j];
-				
-				cMsg = inStream.readUTF();
-				System.out.println("Server.Thread " + clientNo + " Colonna: " + cMsg );
+			// Create connection to server socket
+			System.out.print("Client: Tentativo di connessione server=" + severAddress + ":" + severPort + " ... ");
+			Socket socket = new Socket(severAddress, severPort); 
+			System.out.println("Connected");
+			System.out.println("");
 
+			// Create streams to read/write data from socket
+			DataInputStream inStream = new DataInputStream(socket.getInputStream());
+			DataOutputStream outStream = new DataOutputStream(socket.getOutputStream());
+			// Create streams to read data from System.in
+			Scanner scanner = new Scanner(System.in);			
+			
+			while (!clientMessage.equals("end")) {
 				
+		
+				
+				// inserimento della riga
+				System.out.print("Client: Seleziona la riga> ");
+				clientMessage = scanner.next();
+				try {
+					int riga = Integer.parseInt(clientMessage);
+				}catch(NumberFormatException ex) {
+					ex.printStackTrace();
+				}
+				// Send the entered number to server
+				System.out.println("Client: invio numero riga inserito: " + clientMessage);
+				outStream.writeUTF(clientMessage);
+				outStream.flush();
+				
+				//inserimento della colonna
+				System.out.print("\nClient: Seleziona la colonna> ");
+				clientMessage = scanner.next();
+				try {
+					int colonna = Integer.parseInt(clientMessage);
+				}catch(NumberFormatException ex) {
+					ex.printStackTrace();
+				}
+				// Send the entered number to server
+				System.out.println("Client: invio numero colonna inserita: " + clientMessage);
+				outStream.writeUTF(clientMessage);
+				outStream.flush();
+				
+
+				// Read data from socket input stream
+				serverMessage = inStream.readUTF();
+				System.out.println("Client: ricevuto il messaggio: " + serverMessage);
 			}
-			
-			//Prima di chiudere la connessione viene inviato un ultimo messaggio
-			sMsg="Bye";
-			System.out.println("Server.Thread " + clientNo + " Invio messaggio " + cMsg );
-			outStream.writeUTF(sMsg);
-			outStream.flush();
 
-			//Chiusura delle risorse utilizzate
+			// Close resources
 			inStream.close();
 			outStream.close();
-			serverClientSocket.close();
-
-		} catch (Exception ex) {
-			System.out.println(ex);
-		} finally {
-			System.out.println("\nArrivederci");
-			System.out.println("Client " + clientNo + " si è disconnesso ");
+			socket.close();
+			scanner.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 }
