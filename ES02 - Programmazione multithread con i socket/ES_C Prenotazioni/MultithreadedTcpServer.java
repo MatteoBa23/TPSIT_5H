@@ -9,7 +9,7 @@ import java.net.Socket;
 
 public class MultithreadedTcpServer {
 
-	static final int MAX_CONN = 999;
+	static final int MAX_CONN = 999;		//costante
 	static final int SRV_PORT = 8698;
 
 	public static void main(String[] args) throws Exception {
@@ -36,4 +36,5 @@ public class MultithreadedTcpServer {
 		server.close();
 	}
 }
+
 
