@@ -37,8 +37,6 @@ public class TcpServer {
 				while ((clientMsg=inStream.readLine()).length() != 0) {
 					System.out.println(clientMsg);	
 				}  
-				// Elaborare qui i dati ricevuti dal client 
-				// ---------------------------------------------------------
 
 				//Invio dei dati su stream di rete al client
 				clientMsg = "HTTP/1.1 200 OK\r\n";
