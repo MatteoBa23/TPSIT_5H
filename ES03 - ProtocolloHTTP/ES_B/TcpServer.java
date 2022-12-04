@@ -53,7 +53,6 @@ public class TcpServer {
 				clientMsg += "Saluti da Matteo Ballabio";
 				outStream.write(clientMsg.getBytes());
 				outStream.flush();
-
 				System.out.println("\n....................... Fine ricezione dati\n");
 				// Close resources
 				clientSocket.close();
