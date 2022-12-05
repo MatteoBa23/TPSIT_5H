@@ -16,8 +16,6 @@ public class TcpServer {
 	public static void main(String[] args) throws Exception {
 		
 		final int SERVER_PORT=8765;
-        final String ACCESO="ON";
-        final String SPENTO="OFF";
 		String clientMsg = "";
 		
 		try {			 
@@ -39,17 +37,15 @@ public class TcpServer {
 				//Lettura dati dal client un righa alla volta   
 				while ((clientMsg=inStream.readLine()).length() != 0) {
 					System.out.println(clientMsg);	
+					if(clientMsg.equals("ON"))
+                   		clientMsg+="Accendo le luci";
+                	else if(clientMsg.equals("OFF"))
+                    	clientMsg+="Spengo le luci";
 				}  
                 
 
 				//Invio dei dati su stream di rete al client
 				clientMsg = "HTTP/1.1 200 OK\r\n";
-                aiuto=request.getHeader("ON");
-				if(clientMsg.equals(aiuto))
-                    clientMsg+="Accendo le luci";
-                    /*
-                else if(clientMsg=request.getHeader("OFF"))
-                    clientMsg+="Spengo le luci";*/
 				clientMsg += "\r\n";
 				clientMsg += "Saluti da Matteo Ballabio";
 				outStream.write(clientMsg.getBytes());
