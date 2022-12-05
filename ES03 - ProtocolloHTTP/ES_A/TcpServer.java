@@ -2,8 +2,9 @@
  * Implementazione di un server web utilizzando la comunicazione tramite socket.
  * Lettura dati multi riga provenienti dal client
  * 
- * from folder network/..
- * javac network/TcpServer.java; java network.TcpServer 
+ * Autore: Ballaboio Matteo
+ * Classe: 5H
+ * Data: 29/11/2022
  */
 package network;
 
