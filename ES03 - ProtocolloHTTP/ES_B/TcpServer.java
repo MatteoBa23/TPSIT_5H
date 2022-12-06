@@ -42,8 +42,8 @@ public class TcpServer {
                 	else if(clientMsg.equals("GET /OFF HTTP/1.1"))
                     	clientMsg+="Spengo le luci";
 				}  
-				
-				//------------------------------------------
+
+				//----------------------------------------------------------	
 				//Invio dei dati su stream di rete al client
 				serverMsg = "HTTP/1.1 200 OK\r\n";
 				serverMsg += "\r\n";
