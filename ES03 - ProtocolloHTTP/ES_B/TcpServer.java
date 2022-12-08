@@ -2,10 +2,10 @@
  * Implementazione di un server web utilizzando la comunicazione tramite socket.
  * Lettura dati multi riga provenienti dal client
  * 
- * Autore: Ballaboio Matteo
- * Classe: 5H
- * Data: 29/11/2022
+ * from folder network/..
+ * javac network/TcpServer.java; java network.TcpServer 
  */
+ 
 package network;
 
 import java.io.*;
@@ -18,6 +18,7 @@ public class TcpServer {
 		final int SERVER_PORT=8765;
 		String clientMsg = "";
 		String serverMsg = "";
+		
 		try {			 
 			// Creazione del socket sul server e ascolto sulla porta
 			ServerSocket serverSocket = new ServerSocket(SERVER_PORT);
@@ -26,34 +27,52 @@ public class TcpServer {
 			boolean endConn=false;
 			while(!endConn) {
 				// Attesa della connessione con il client
-				System.out.println("Attesa ricezione dati dal client ....................... \n");
+				System.out.println("\nAttesa ricezione dati dal client ....................... \n");
 				Socket clientSocket = serverSocket.accept();
 				
 				// Create output stream to write data and input stream to read data from socket
 				DataOutputStream outStream = new DataOutputStream(clientSocket.getOutputStream());	
 				BufferedReader inStream = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 	
-				// ---------------------------------------------------------
-				//Lettura dati dal client un righa alla volta   
-				while ((clientMsg=inStream.readLine()).length() != 0) {
-					System.out.println(clientMsg);	
-					if(clientMsg.equals("GET /ON HTTP/1.1"))
-                   		clientMsg+="Accendo le luci";
-                	else if(clientMsg.equals("GET /OFF HTTP/1.1"))
-                    	clientMsg+="Spengo le luci";
-				}  
+				
+                //Lettura dati dal client un righa alla volta   
+                clientMsg=inStream.readLine();
+				System.out.println(clientMsg);	
+		 
+                // Elaborare qui i dati ricevuti dal client 
 
-				//----------------------------------------------------------	
+                clientMsg.trim();	//tolgo gli spazi all'inizio e alla fine della stringa
+				String ArrayMessaggio[]=clientMsg.split("\\s+");
+
+				// ---------------------------------------------------------
+
 				//Invio dei dati su stream di rete al client
 				serverMsg = "HTTP/1.1 200 OK\r\n";
-				serverMsg += "\r\n";
-				serverMsg += "Saluti da Matteo Ballabio";
-				outStream.write(serverMsg.getBytes());
-				outStream.flush();
-				System.out.println("\n....................... Fine ricezione dati\n");
+				//serverMsg += "Connection: close\r\n";
+				serverMsg += "Content-Type: text/html\r\n"; 
+                serverMsg += "\r\n";
+				
+				//possibili messaggi inviati dal browser
+                switch(ArrayMessaggio[1]) {
+                   
+				    case "/": serverMsg += "Saluti da Ballabio Matteo";
+                              break;
 
-                
-				// Close resources
+                    case "/ON": serverMsg += "Ok, ho acceso le luci";
+                                     break;
+
+                    case "/OFF": serverMsg += "Ok, ho spento le luci";
+                                    break;
+
+                    default : 	serverMsg += "Qualcosa è andato storto";           
+                }
+
+            	System.out.print(serverMsg + "\n");		
+                outStream.write(serverMsg.getBytes());
+				outStream.flush();
+
+				System.out.println("\n....................... Fine ricezione dati\n");
+				//Close resources
 				clientSocket.close();
 				inStream.close();
 				outStream.close();
