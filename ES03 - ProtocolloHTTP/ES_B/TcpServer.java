@@ -36,18 +36,14 @@ public class TcpServer {
 				BufferedReader inStream = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 	
 				
-                //Lettura dati dal client un righa alla volta   
+                //Legge i dati provenient dal client un righa alla volta   
                 clientMsg=inStream.readLine();
 				System.out.println(clientMsg);	
 		 
-                // Elaborare qui i dati ricevuti dal client 
-
-                clientMsg.trim();	//tolgo gli spazi all'inizio e alla fine della stringa
 				String ArrayMessaggio[]=clientMsg.split("\\s+");
 
-				//Invio dei dati su stream di rete al client
+				//Invio dei dati al client
 				serverMsg = "HTTP/1.1 200 OK\r\n";
-				//serverMsg += "Connection: close\r\n";
 				serverMsg += "Content-Type: text/html\r\n"; 
                 serverMsg += "\r\n";
 				
@@ -58,10 +54,10 @@ public class TcpServer {
                               break;
 
                     case "/ON": serverMsg += "Ok, ho acceso le luci";
-                                     break;
+                                break;
 
                     case "/OFF": serverMsg += "Ok, ho spento le luci";
-                                    break;
+                                 break;
 
                     default : 	serverMsg += "Qualcosa è andato storto";           
                 }
