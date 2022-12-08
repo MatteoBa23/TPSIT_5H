@@ -45,8 +45,6 @@ public class TcpServer {
                 clientMsg.trim();	//tolgo gli spazi all'inizio e alla fine della stringa
 				String ArrayMessaggio[]=clientMsg.split("\\s+");
 
-				// ---------------------------------------------------------
-
 				//Invio dei dati su stream di rete al client
 				serverMsg = "HTTP/1.1 200 OK\r\n";
 				//serverMsg += "Connection: close\r\n";
