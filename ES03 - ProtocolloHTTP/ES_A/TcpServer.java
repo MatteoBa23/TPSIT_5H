@@ -2,7 +2,7 @@
  * Implementazione di un server web utilizzando la comunicazione tramite socket.
  * Lettura dati multi riga provenienti dal client
  * 
- * Autore: Ballaboio Matteo
+ * Autore: Ballabio Matteo
  * Classe: 5H
  * Data: 29/11/2022
  */
