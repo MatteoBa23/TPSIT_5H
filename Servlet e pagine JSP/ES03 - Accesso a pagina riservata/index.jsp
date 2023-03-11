@@ -6,8 +6,7 @@
 <title>ITCS Erasmo da Rotterdam</title>
 </head>
 <body>
-<h2>Benvenuto nel nostro sito</h2>
-<a href="riser.jsp">Sezione riservata del sito</a><br>
+    <h2>Benvenuto nel nostro sito</h2>
 <a href="login.jsp">Login</a><br>
 </body>
 </html>
