@@ -3,26 +3,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="CSS/matrimonio.css">
 <meta charset="ISO-8859-1">
 <title>ITCS Erasmo da Rotterdam</title>
 </head>
 <body>
-<h2>Questionario sulla qualita' dei nostri prodotti</h2><br><br>
+<h2>Questionario sulla qualità dei nostri prodotti</h2><br><br>
 <h4>Informazioni sul questionario</h4>
+<div class="info_que">
 <p>In questo questionario verranno chieste alcune informazioni inerenti l'utente che sta svolgendo il sondaggio.<br>
 Ci saranno tipi diversi di domande:<br>
 1) Domande a risposta chiusa;<br>
 2) Domande a risposta aperta.<br>
+</div>
 <br><br>
-<p>--------------- INFORMAZIONI SULL'UTENTE ---------------<br></p>
-<h4>Nome:</h4>
+<div class="info_utente">
+<p>--------------- INFORMAZIONI UTENTE ---------------<br></p>
+</div>
+
+<div class="info_user">
+<h3>Nome:</h3>
 <input type="text">
-<h4>Cogome:</h4>
+<h3>Cogome:</h3>
 <input type="text">
-<h4>Città:</h4>
+<h3>Città:</h3>
 <input type="text">
 <br><br><br>
+</div>
+<div class="start_que">
 <p>--------------- INIZIO QUESTIONARIO ---------------<br></p>
+</div>
+<div class="questionario">
 <h4>Quale tipologia di cucina vorresti mangiare al tuo prossimo matrimonio?</h4>
 <input type="text">
 <h4>Vorresti un buffet?</h4>
@@ -44,7 +55,8 @@ Ci saranno tipi diversi di domande:<br>
 <input type="checkbox">Soldi<br>
 <input type="checkbox">Barca a vela<br>
 <input type="checkbox">Cocktail di gamberi<br>
-<br><br><br><br>
+</div>
+<br><br>
 <input type="submit">
 </body>
 </html>
