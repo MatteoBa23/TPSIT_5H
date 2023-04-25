@@ -1,0 +1,31 @@
+@charset "ISO-8859-1";
+
+*{
+	padding-left: 5px;
+}
+body{
+	font-family: "Times New Roman", Times, Georgia, serif;
+}
+.info_user h3{
+	color: black;
+	font-family: Verdana;
+	font-size: 15px;
+}
+.info_utente{
+	color:blue;
+	font-size: 17px;
+}
+.info_que{
+	color: red;
+	font-family: Verdana;
+	font-size: 13px;
+}
+.start_que{
+	color: blue;
+	font-size: 17px;
+}
+.questionario h4{
+	color: black;
+	font-family: Verdana;
+	font-size: 12px;
+}
