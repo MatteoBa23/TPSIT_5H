@@ -1,0 +1,28 @@
+@charset "ISO-8859-1";
+
+*{
+	padding-left: 5px;
+}
+* input{
+	border-radius: 15px;
+	border-color: black;
+}
+body{
+	font-family: Verdana;
+}
+.info_que h4{
+	color: blue;
+}
+.info_que p{
+	color: red;
+}
+.inte_que h2{
+	color: green;
+}
+.questionario input checkbox{
+	border-radius: 15px;
+}
+input[type="checkbox"]{
+	border-radius: 10px;
+	border-color: blue;
+}
