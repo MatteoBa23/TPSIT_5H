@@ -1,0 +1,41 @@
+@charset "ISO-8859-1";
+
+*{
+	padding-left: 5px;
+}
+body{
+	font-family: Verdana;
+}
+.link a{
+	text-decoration: none;
+}
+.link a:link{
+	color: red; /*link non visitato*/
+}
+.link a:visited{
+	color: grey; /*link visitato*/
+}
+.link a:hover{
+	color: blue; /*cambio colore quando mouse passa sopra link*/
+}
+.link a:active{
+	color: black; /*link attivo*/
+}
+.link .supercar a:link{
+	color: red; /*link non visitato*/
+}
+.link .supercar a:visited{
+	color: grey; /*link visitato*/
+}
+.link .supercar a:hover{
+	color: red;
+}
+.link .matrimonio a:link{
+	color: red; /*link non visitato*/
+}
+.link .matrimonio a:visited{
+	color: grey; /*link visitato*/
+}
+.link .matrimonio a:hover{
+	color: #ffd1dc;
+}
