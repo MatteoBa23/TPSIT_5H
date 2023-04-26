@@ -16,6 +16,7 @@ Ci saranno tipi diversi di domande:<br>
 1) Domande a risposta chiusa;<br>
 2) Domande a risposta aperta.<br>
 </div>
+<a href="index.jsp">Torna alla home page</a>
 <br><br>
 <div class="info_utente">
 <p>--------------- INFORMAZIONI UTENTE ---------------<br></p>
