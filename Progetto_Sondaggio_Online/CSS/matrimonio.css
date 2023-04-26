@@ -3,6 +3,10 @@
 *{
 	padding-left: 5px;
 }
+* input{
+	border-radius: 15px;
+	border-color: grey;
+}
 body{
 	font-family: "Times New Roman", Times, Georgia, serif;
 }
